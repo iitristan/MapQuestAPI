@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request 
+# import flask
 import requests
 
 app = Flask(__name__)
 
-# Define the API endpoint for fetching the public IP info
+# api endpoint
 IP_API_URL = "https://ipapi.co/json/"
 
 @app.route('/')
@@ -12,10 +13,10 @@ def home():
 
 @app.route('/get_ip_info', methods=['POST'])
 def get_ip_info():
-    # Send a GET request to fetch the IP info
+    # get request for fetching info
     response = requests.get(IP_API_URL).json()
 
-    # Check if the response contains required data
+    # check if the response contains required data
     if response:
         ip_info = {
             'ip': response.get('ip'),
